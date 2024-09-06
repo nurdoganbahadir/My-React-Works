@@ -10,8 +10,8 @@ function App() {
   const [value, setValue] = useState(0);
 
   const fetchJobs = async () => {
-    const res = await fetch(url);
-    const newJobs = await res.json();
+    const reponse = await fetch(url);
+    const newJobs = await reponse.json();
     setJobs(newJobs);
     setLoading(false);
   };
@@ -23,12 +23,33 @@ function App() {
   if (loading) {
     return (
       <section className="section loading">
-        <h1>loading...</h1>
+        <h1>Loading...</h1>
       </section>
     );
   }
 
-  return <h2>tabs project setup</h2>;
+  const { company, dates, duties, title } = jobs[value];
+
+  return (
+    <section className="section">
+      <div className="title">
+        <h2>expierence</h2>
+        <div className="underline"></div>
+      </div>
+      <div className="jobs-center">
+        <article className="job-info"></article>
+        <h3>{title}</h3>
+        <h4>{company}</h4>
+        <p className="job-date">{dates}</p>
+        {duties.map((duty, index) => (
+          <div className="job-desc" key={index}>
+            <FaAngleDoubleRight className="job-icon"></FaAngleDoubleRight>
+            <p>{duty}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default App;

@@ -12,6 +12,7 @@ const HomePage = () => {
     const response = await axios.get(url);
     setBooks(response.data);
   };
+
   useEffect(() => {
     getBooks();
   }, []);

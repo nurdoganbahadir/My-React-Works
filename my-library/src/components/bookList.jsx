@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
+import EditBook from "./EditBook";
 
-const BookList = ({ books, deleteBooks }) => {
+const BookList = ({ books, deleteBooks, putBooks }) => {
+  const [editItem, setEditItem] = useState("");
+console.log(editItem);
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -43,6 +46,17 @@ const BookList = ({ books, deleteBooks }) => {
                     size={20}
                     type="button"
                     className="me-2 text-warning cursor-pointer"
+                    onClick={() => {
+                      setEditItem({
+                        title,
+                        author,
+                        ISBN,
+                        image,
+                        genre,
+                        publicationYear,
+                        id,
+                      });
+                    }}
                   />
                 </td>
               </tr>
@@ -50,6 +64,11 @@ const BookList = ({ books, deleteBooks }) => {
           )}
         </tbody>
       </table>
+      <EditBook
+        editItem={editItem}
+        setEditItem={setEditItem}
+        putBooks={putBooks}
+      />
     </div>
   );
 };

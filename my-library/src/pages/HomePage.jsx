@@ -24,16 +24,21 @@ const HomePage = () => {
     getBooks();
   };
 
+  //!PUT
+  const putBooks = async (editItem) => {
+    await axios.put(`${url}/${editItem.id}/`, editItem);
+    getBooks();
+  };
+
   useEffect(() => {
     getBooks();
   }, []);
 
-  console.log(books);
 
   return (
     <>
       <AddBook postBooks={postBooks} />
-      <BookList books={books} deleteBooks={deleteBooks} />
+      <BookList books={books} deleteBooks={deleteBooks} putBooks={putBooks} />
     </>
   );
 };

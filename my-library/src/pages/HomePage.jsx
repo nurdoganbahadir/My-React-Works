@@ -6,20 +6,27 @@ import axios from "axios";
 const HomePage = () => {
   const [books, setBooks] = useState([]);
 
-  const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
+  const url = "https://clarus-library-api.vercel.app/";
 
   const getBooks = async () => {
     const response = await axios.get(url);
     setBooks(response.data);
   };
 
+  const postBooks = async (newData) => {
+    await axios.post(url, newData);
+    getBooks();
+  };
+
   useEffect(() => {
     getBooks();
   }, []);
 
+  console.log(books);
+
   return (
     <>
-      <AddBook />
+      <AddBook postBooks={postBooks} />
       <BookList />
     </>
   );

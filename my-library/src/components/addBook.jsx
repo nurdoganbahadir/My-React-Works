@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-const AddBook = () => {
+const AddBook = ({ postBooks }) => {
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [ISBN, setISBN] = useState("");
+  const [img, setImg] = useState("");
+  const [genre, setGenre] = useState("");
+  const [year, setYear] = useState("");
+  const [id, setId] = useState(uuidv4());
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    postBooks({
+      title: title,
+      author: author,
+      ISBN: ISBN,
+      img: img,
+      genre: genre,
+      publicationYear: year,
+      id: id,
+    });
+  };
+
   return (
     <div className="container my-5">
       <h1 className="text-center">My Library</h1>
       <div className="row">
         <div className="col-sm-12">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="bookName" className="form-label">
                 Book Name
@@ -15,6 +37,8 @@ const AddBook = () => {
                 type="text"
                 placeholder="Book Name"
                 className="form-control"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
               />
             </div>
             <div className="mb-3">
@@ -23,15 +47,23 @@ const AddBook = () => {
               </label>
               <input
                 type="text"
-                placeholder="Writer"
+                placeholder="Author"
                 className="form-control"
+                onChange={(e) => setAuthor(e.target.value)}
+                value={author}
               />
             </div>
             <div className="mb-3">
               <label htmlFor="bookName" className="form-label">
                 ISBN
               </label>
-              <input type="text" placeholder="ISBN" className="form-control" />
+              <input
+                type="text"
+                placeholder="ISBN"
+                className="form-control"
+                onChange={(e) => setISBN(e.target.value)}
+                value={ISBN}
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="bookName" className="form-label">
@@ -41,14 +73,24 @@ const AddBook = () => {
                 type="text"
                 placeholder="Kapak Resmi"
                 className="form-control"
+                onChange={(e) => setImg(e.target.value)}
+                value={img}
               />
             </div>
             <div className="mb-3">
               <label htmlFor="bookName" className="form-label">
                 Tür
               </label>
-              <input type="text" placeholder="Tür" className="form-control" />
-              <p>Birden fazla seçenek varsa slash ile ayırabilirsiniz.</p>
+              <input
+                type="text"
+                placeholder="Tür"
+                className="form-control"
+                onChange={(e) => setGenre(e.target.value)}
+                value={genre}
+              />
+              <p className="">
+                Birden fazla seçenek varsa slash ile ayırabilirsiniz.
+              </p>
             </div>
             <div className="mb-3">
               <label htmlFor="bookName" className="form-label">
@@ -58,6 +100,8 @@ const AddBook = () => {
                 type="text"
                 placeholder="Yayınlanma Tarihi"
                 className="form-control"
+                onChange={(e) => setYear(e.target.value)}
+                value={year}
               />
             </div>
             <button type="submit" className="btn btn-primary">

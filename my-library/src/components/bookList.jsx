@@ -19,10 +19,12 @@ const BookList = ({ books }) => {
         </thead>
         <tbody>
           {books.map(
-            ({ title, author, ISBN, image, genre, publicationYear },index) => (
-              <tr key={index}>
+            ({ title, author, ISBN, image, genre, publicationYear, id }) => (
+              <tr key={id}>
                 <td>{ISBN}</td>
-                <td><img src={image} alt={title} width={50}/></td>
+                <td>
+                  <img src={image} alt={title} width={50} />
+                </td>
                 <td>{title}</td>
                 <td>{author}</td>
                 <td>{genre}</td>

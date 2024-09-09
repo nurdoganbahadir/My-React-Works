@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 const AddBook = ({ postBooks }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [ISBN, setISBN] = useState("");
-  const [img, setImg] = useState("");
+  const [image, setImage] = useState("");
   const [genre, setGenre] = useState("");
   const [year, setYear] = useState("");
-  const [id, setId] = useState(uuidv4());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,10 +14,9 @@ const AddBook = ({ postBooks }) => {
       title: title,
       author: author,
       ISBN: ISBN,
-      img: img,
+      image: image,
       genre: genre,
       publicationYear: year,
-      id: id,
     });
   };
 
@@ -73,8 +70,8 @@ const AddBook = ({ postBooks }) => {
                 type="text"
                 placeholder="Kapak Resmi"
                 className="form-control"
-                onChange={(e) => setImg(e.target.value)}
-                value={img}
+                onChange={(e) => setImage(e.target.value)}
+                value={image}
               />
             </div>
             <div className="mb-3">

@@ -18,28 +18,30 @@ const BookList = ({ books }) => {
           </tr>
         </thead>
         <tbody>
-          {books.map(({}) => (
-            <tr>
-              <th>{}</th>
-              <td>{}</td>
-              <td>{}</td>
-              <td className="text-center ">
-                <AiFillDelete
-                  type="button"
-                  size={22}
-                  className="text-danger cursor-pointer"
-                />
+          {books.map(
+            ({ title, author, ISBN, img, genre, publicationYear, id }) => (
+              <tr>
+                <th>{}</th>
+                <td>{}</td>
+                <td>{}</td>
+                <td className="text-center ">
+                  <AiFillDelete
+                    type="button"
+                    size={22}
+                    className="text-danger cursor-pointer"
+                  />
 
-                <FaEdit
-                  data-bs-toggle="modal"
-                  data-bs-target="#editModal"
-                  size={20}
-                  type="button"
-                  className="me-2 text-warning cursor-pointer"
-                />
-              </td>
-            </tr>
-          ))}
+                  <FaEdit
+                    data-bs-toggle="modal"
+                    data-bs-target="#editModal"
+                    size={20}
+                    type="button"
+                    className="me-2 text-warning cursor-pointer"
+                  />
+                </td>
+              </tr>
+            )
+          )}
         </tbody>
       </table>
     </div>

@@ -6,7 +6,7 @@ import axios from "axios";
 const HomePage = () => {
   const [books, setBooks] = useState([]);
 
-  const url = "";
+  const url = "https://clarus-library-api.vercel.app/books";
 
   const getBooks = async () => {
     const response = await axios.get(url);

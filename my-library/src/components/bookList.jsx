@@ -19,11 +19,14 @@ const BookList = ({ books }) => {
         </thead>
         <tbody>
           {books.map(
-            ({ title, author, ISBN, img, genre, publicationYear, id }) => (
-              <tr>
-                <th>{}</th>
-                <td>{}</td>
-                <td>{}</td>
+            ({ title, author, ISBN, image, genre, publicationYear },index) => (
+              <tr key={index}>
+                <td>{ISBN}</td>
+                <td><img src={image} alt={title} width={50}/></td>
+                <td>{title}</td>
+                <td>{author}</td>
+                <td>{genre}</td>
+                <td>{publicationYear}</td>
                 <td className="text-center ">
                   <AiFillDelete
                     type="button"

@@ -20,10 +20,10 @@ const HomePage = () => {
   };
   //! DELETE
   const deleteBooks = async (id) => {
-    await axios.delete(`${url}${id}/`);
+    await axios.delete(`${url}/${id}/`);
     getBooks();
   };
-  
+
   useEffect(() => {
     getBooks();
   }, []);
@@ -33,7 +33,7 @@ const HomePage = () => {
   return (
     <>
       <AddBook postBooks={postBooks} />
-      <BookList books={books} />
+      <BookList books={books} deleteBooks={deleteBooks} />
     </>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 
-const BookList = ({ books }) => {
+const BookList = ({ books, deleteBooks }) => {
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -34,6 +34,7 @@ const BookList = ({ books }) => {
                     type="button"
                     size={22}
                     className="text-danger cursor-pointer"
+                    onClick={() => deleteBooks(id)}
                   />
 
                   <FaEdit
